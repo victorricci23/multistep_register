@@ -12,295 +12,14 @@
       sizes="96x96"
     />
 
+    <link href="assets/style.css" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <title>Multi-step Register Form | devChallenges.io</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        color: #E5E7EB;
-        font-family: Inter;
-      }
-
-      body {
-        padding: 20px 20px 0 20px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background-color: #121826;
-      }
-
-      h5 {
-        font-weight: 300;
-      }
-
-      h2 {
-        font-size: 18px;
-        font-weight: 450;
-      }
-
-      h3 {
-        font-size: 15px;
-        color: #A1A1A9;
-        font-weight: 400;
-      }
-
-      dt {
-        font-size: 15px;
-        color: #A1A1A9;
-        font-weight: 400;
-      }
-
-      dd {
-        font-size: 15px;
-        color: #E5E7EB;
-        font-weight: 400;
-      }
-
-      ul {
-        padding-left: 30px;
-      }
-      
-      li {
-        font-size: 15px;
-        padding-bottom: 5px;
-        color: #E5E7EB;
-        
-      }
-
-      main {
-        width: 100%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-      }
-
-      input {
-        border-style: none;
-        outline: none;
-        border: 1px solid #394150;
-        border-radius: 6px;
-        padding: 12px;
-        background-color: #212936;
-        transition: border-color 0.3s ease;        
-      }
-
-      input:focus {
-        border-color: #E5E7EB;
-      }
-
-      input::placeholder {
-        color: #9ca3af;
-      }
-
-      label {
-        font-size: 12px;
-      }
-
-      #multiStepForm {
-        width: 100%;
-        max-width: 400px;
-      }
-
-      
-      .form-step.active {
-        width: 100%;
-        /* display: block; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 340px;
-        padding: 30px;
-        border-radius: 10px;
-        
-        position: relative; /* importante */
-        
-        background:
-          linear-gradient(#212936, #212936) padding-box,
-          linear-gradient(
-            120deg,
-            rgba(229, 231, 235, 0.45) 0%,
-            rgba(229, 231, 235, 0) 28%
-          ) border-box;
-          
-        border: 1px solid transparent; /* obrigatório para o gradiente aparecer */
-      }
-      
-      .form-step.active::before {
-        width: 100%;
-        content: "";
-        position: absolute;
-        top: 20%;
-        left: 5%;
-        transform: translate(-40%, -50%);
-        
-        width: 350px;
-        height: 350px;
-        
-        background: radial-gradient(
-          circle,
-          rgba(132, 94, 238, 0.4) 0%,
-          rgba(132, 94, 238, 0.12) 30%,
-          transparent 70%
-          );
-          
-        border-radius: 50%;
-        z-index: -1;          /* fica atrás do card */
-        pointer-events: none;
-      }
-      
-      .form-step {
-        display: none;
-        width: 100%;
-      }
-
-      .register-step {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-      }
-      
-      .step-organize {
-        display:flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .next-btn {
-        width: 100%;
-        max-width: 125px;
-        margin-top: auto;
-        align-self: center;
-        
-        background: none;
-        border: none;
-        cursor: pointer;
-        background-color: #845EEE;
-        transition: transform 0.3s ease-in-out;
-        padding: 10px 25px 10px 25px;
-        border-radius: 15px;
-        
-        /* Button Gradient */
-        background: linear-gradient(180deg, #845eee 0%, #652cd1 100%);
-      }
-
-      .interested-organize {
-        display:  flex;
-        flex-direction: column;
-        gap: 15px;
-        padding-bottom: 13px;
-      }
-
-      .topic-button {
-        width: 100%;
-        max-width: 400px;
-        text-align: left;
-        font-size: 12px;
-        font-weight: 400;
-
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 8px;
-        color: #E5E7EB;
-        background-color: #394150;
-        transition: transform 0.3s ease-in-out;
-        border: 1px solid #4D5562;
-      }
-
-      .topic-button.active {
-        background-color: #5425AF;
-        transition: transform 0.3s ease-in-out;
-        border: 1px solid #845EEE;
-      }
-
-
-      .indicator.active {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .indicator {
-        display: none;
-        width: 100%;
-      }
-
-      .step-indicator {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .step-dot {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: #394150;
-        transition: background-color 0.3s ease;
-      }
-
-      .step-dot.active {
-        background-color: #6D28D9;
-        box-shadow: 0 0 0 5px #845EEE4D;
-      }
-
-      .summary {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .summary-data {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .user-data {
-        display: flex;
-        gap: 5px;
-      }
-
-      /* .summary-topic ul {
-        padding-left: 30px;
-      } */
-
-      .send-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .author-info {
-        font-size: 14px;
-        text-align: center;
-        margin-top: auto;
-        color: #5425AF;
-      }
-
-      .author-info a {
-        text-decoration: none;
-      }
-    </style>
   </head>
   <body>
 
@@ -310,7 +29,7 @@
 
         <div id="stepOne" class="form-step active">
           <div class="register-step">
-            <h2>Register</h2>
+            <h1>Register</h1>
             <div class="step-organize">
               <label for="name">Name</label>
               <input 
@@ -341,7 +60,7 @@
 
         <div id="stepTwo" class="form-step">
           <div class="register-step">
-            <h2>Which topics you are interested in?</h2>
+            <h1>Which topics you are interested in?</h1>
             <div class="interested-organize">
               <button type="button" class="topic-button">Software Development</button>
               <button type="button" class="topic-button">User Experience</button>
@@ -354,7 +73,7 @@
 
         <div id="stepThree" class="form-step">
           <div class="register-step">
-            <h2>Summary</h2>
+            <h1>Summary</h1>
 
             <div class="summary"> 
 
@@ -372,7 +91,7 @@
               </div>
 
               <div class="summary-topic">
-                <h3>Topics:</h3>
+                <h2>Topics:</h2>
                 <ul></ul>
               </div>
 
@@ -385,13 +104,13 @@
         <div id="stepFour" class="form-step">
           <div class="send-form">
             <h1>Thank you!</h1>
-            <p>form submitted</p>
+            <p>form submitted.</p>
           </div>
         </div>
       </form>
 
       <div class="indicator active">
-        <h5>Step 1 of 3</h5>
+        <p>Step 1 of 3</p>
         <div class="step-indicator">
             <span class="step-dot active"></span>
             <span class="step-dot"></span>
@@ -409,6 +128,6 @@
       >.
     </footer>
 
-    <script src="assets/script.js"></script>
+    <script src="assets/script.js" defer></script>
   </body>
 </html>
