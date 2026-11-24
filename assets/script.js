@@ -2,7 +2,7 @@ const steps = document.querySelectorAll(".form-step");
 const indicator = document.querySelector(".indicator.active");
 const dots = indicator.querySelectorAll('.step-dot');
 const topicButtons = document.querySelectorAll('.topic-button');
-const stepCounter = indicator.querySelector('h5');
+const stepCounter = indicator.querySelector('p');
 
 let topicList = [];
 let nextIndex = 0;
@@ -111,7 +111,8 @@ function nextStep(currentStep, index) {
     steps[nextIndex].classList.toggle("active", true);
 
     if (nextIndex > 2) {
-        indicator.classList.remove("active");
+        // indicator.classList.remove("active");
+        dots.forEach((dot) => dot.classList.remove("active"));
         return;
     } 
 
